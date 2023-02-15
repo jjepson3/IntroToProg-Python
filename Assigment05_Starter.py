@@ -63,12 +63,18 @@ while (True):
     elif (strChoice.strip() == '3'):
         strRemove = input('Which task would you like to remove?\n\n'
                           '\tTask: ')
+        intRemoveCount = 0
         for row in lstTable:
             if strRemove.lower() == row['Task'].lower():
                 lstTable.remove(row)
-                print('\nTask Removed!')
-            else:
-                print('Error! Task does not exist.')
+                intRemoveCount += 1
+
+        if intRemoveCount == 1:
+            print('\nTask Removed!')
+        elif intRemoveCount > 1:
+            print('\n Multiple Tasks Removed!')
+        else:
+            print('\nError! Task does not exist.')
 
         continue
     # Step 6 - Save tasks to the ToDoToDoList.txt file
@@ -84,4 +90,3 @@ while (True):
         break  # and Exit the program
     else:  # Error if anything input but 1-5
         print('Error! Please enter a number from 1 to 5.')
-        
